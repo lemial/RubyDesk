@@ -28,17 +28,6 @@
   </div>
 </div>
 <table class="full zebra">
-<!-- <thead>
-  <tr>
-	<th><%=t(:prio_ticket) %></th>
-	<th><%=t(:initiator) %></th>
-	<th><%=t(:context) %></th>
-	<th><%=t(:assigned_to) %></th>
-	<th><%=t(:create_date) %></th>
-    </tr>
-  </thead> -->
-  
-  
   <tbody>
     <% @tickets.each do |ticket| %>
       <tr data-ticket-url="<%= ticket_url(ticket) %>">

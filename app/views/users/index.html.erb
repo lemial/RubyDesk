@@ -16,6 +16,7 @@
         <tr>
           <th><%= t(:email) %></th>
           <th><%= t(:role) %></th>
+          <th><% t(:user_actions) %></th>
         </tr>
       </thead>
       <tbody>
@@ -23,6 +24,7 @@
           <tr>
             <td><%= link_to user.email, edit_user_path(user) %></td>
             <td><%= (user.agent?) ? t(:agent) : t(:customer) %></td>
+            <td><%= link_to user.email, lock_user_path(user) %></td>
           </tr>
         <% end %>
       </tbody>

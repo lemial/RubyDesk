@@ -14,6 +14,8 @@ gem 'therubyracer'
 
 gem 'jquery-rails'
 
+gem 'sqlite3'
+
 # foundation form errors
 gem 'foundation_rails_helper'
 
@@ -44,7 +46,7 @@ end
 # Optional PostgreSQL for production
 gem 'pg', group: :postgresql
 # Optional MySQL for production
-# gem 'mysql2', group: :mysql
+gem 'mysql2', group: :mysql
 
 # authentication
 gem 'devise'

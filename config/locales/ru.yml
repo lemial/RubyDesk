@@ -11,6 +11,7 @@ ru:
   personal_settings: 'Личные настройки'
   sign_out: 'Выход'
   delete: 'Удалить'
+  add: 'Ок'
 
 # devise/sessions/new
   sign_in: 'Войти'
@@ -90,7 +91,7 @@ ru:
 
 # replies/_form
   reply: 'Ответ'
-  attach_files: 'Прикрепить файл(ы)'
+  attach_files: 'Прикрепить файл(ы):'
   send_reply: 'Отправить ответ'
   on_date_author_wrote: '%{date}, %{author} написал:'
   notification_will_be_sent_to: 'Ваше уведомление будет отправлено:'

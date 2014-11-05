@@ -2,7 +2,7 @@
 
   <%= r.hidden_field :ticket_id %>
   <div class="ma">
-    <h3><%= t(:reply) %></h3>
+    <h4><%= t(:reply) %></h4>
 
     <%
       content = '<p></p>' + current_user.signature.to_s
@@ -28,7 +28,9 @@
       <%= label_tag 'attachment[]', t(:attach_files) %>
     </p>
     <p>
-      <%= file_field_tag 'attachment[]', multiple: true, label: false %>
+      <div style="width: 350px;">
+       <%= file_field_tag 'attachment[]', multiple: true, label: false, class: 'button [tiny small large]' %>
+      </div>
     </p>
 
     <p class="no-m">
