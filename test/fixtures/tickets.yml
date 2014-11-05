@@ -1,0 +1,20 @@
+problem:
+  subject: I have a problem
+  content: My computer doesn't start anymore
+  user: bob
+  assignee: alice
+  priority: low
+  message_id: 'test123@test123'
+
+multiple:
+  subject: Some problems
+  content: Word doesn't open, internet doesn't work
+  user: charlie
+  assignee: alice
+  status: closed
+  priority: high
+
+daves_problem:
+  subject: Dave has a problem
+  content: Dave has a problem with his computer
+  user: dave

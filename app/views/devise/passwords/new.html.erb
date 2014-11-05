@@ -1,0 +1,15 @@
+<div class="row mt">
+  <div class="medium-10 large-8 columns medium-centered ba">
+    <div class="row mt mb">
+      <div class="medium-10 large-8 columns medium-centered">
+        <h3><%= t(:forgot_password) %></h3>
+        <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+        
+          <%= f.email_field :email %>
+        
+          <%= f.submit t(:send_instructions), class: 'button radius mt' %> <%= render "devise/shared/links" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

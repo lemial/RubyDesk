@@ -1,0 +1,2 @@
+default_page:
+  attachable: multiple(Ticket)

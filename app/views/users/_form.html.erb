@@ -1,0 +1,44 @@
+<%= form_for @user, html: { class: 'edit_user' } do |f| %>
+  <div class="row mt mb">
+
+    <div class="medium-6 columns">
+
+      <h5><%= t(:account_settings) %></h5>
+      <p><%= t(:only_fill_in_passwords_when_modifying) %></p>
+
+      <% if can? :manage, User %>
+        <%= f.text_field :email %>
+      <% end %>
+
+      <%= f.password_field :password %>
+
+      <%= f.password_field :password_confirmation %>
+
+      <% if can? :manage, User %>
+        <%= f.check_box :agent, label: t(:user_is_an_agent) %>
+      <% end %>
+    </div>
+
+    <div class="medium-6 columns">
+      <% if @user.agent? %>
+        <h5><%= t(:email_settings) %></h5>
+
+        <%= f.check_box :notify, label: t(:receive_new_ticket_notifications) %>
+
+        <%= f.text_area :signature, rows: 5, cols: 20, class: 'tinymce' %>
+      <% elsif can? :create, Labeling %>
+        <h5><%= t(:access_control) %></h5>
+        <p><%= t(:have_access_to_label) %></p>
+
+        <%= f.label :label_ids %>
+        <%= f.collection_select :label_ids, @labels, :id, :name, {}, { multiple: true, class: 'select2' } %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-12 columns bt">
+      <%= f.submit t(:save), class: 'success button radius mt' %>
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,129 @@
+<div class="panel">
+  <div class="row collapse">
+    <div class="medium-9 columns">
+      <h4 class="filter-title no-m pts">
+
+        <%# if params[:q].present? %>
+          <%#= t(:count_tickets_containing, count: @tickets.count) %> <em><%#= params[:q].to_s %></em>
+        <%# else %>
+          <%#= t(:count_tickets, count: @tickets.count) %>
+        <%# end %>
+
+      </h4>
+    </div>
+    <div class="medium-3 columns">
+      <%= form_tag tickets_path, method: :get do %>
+        <%= hidden_field_tag :assignee_id, params[:assignee_id] %>
+        <%= hidden_field_tag :status, params[:status] %>
+        <div class="row collapse">
+          <div class="small-8 columns">
+            <%= text_field_tag :q, params[:q], class: 'no-m' %>
+          </div>
+          <div class="small-4 columns">
+            <%= button_tag t(:search), type: 'submit', class: 'radius no-m button postfix' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<table class="full zebra">
+<!-- <thead>
+  <tr>
+	<th><%=t(:prio_ticket) %></th>
+	<th><%=t(:initiator) %></th>
+	<th><%=t(:context) %></th>
+	<th><%=t(:assigned_to) %></th>
+	<th><%=t(:create_date) %></th>
+    </tr>
+  </thead> -->
+  
+  
+  <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr data-ticket-url="<%= ticket_url(ticket) %>">
+
+        <td>
+          <% if can? :update, ticket %>
+            <a href="#" data-dropdown="priorities-<%= ticket.id %>">
+              <span class="priority-<%= ticket.priority %> fa fa-circle"></span>
+            </a>
+            <%= render 'priority_dropdown', ticket: ticket, short: true %>
+          <% else %>
+            <span class="priority-<%= ticket.priority %> fa fa-circle"></span>
+          <% end %>
+        </td>
+
+        <td style="white-space:nowrap">
+	  <% if !ticket.user.email.nil? %>
+            <%= ticket.user.email %>
+          <% else %>
+            <%= t(:delete) %>
+          <% end %>
+        </td>
+
+        <td class="text-secondary table-nowrap">
+          <% ticket.labels.viewable_by(current_user).each do |label| %>
+            <%= render label %>
+          <% end %>
+          <% if !ticket.subject.nil? %>
+            <a href="<%= ticket_url(ticket) %>">
+              <% if ticket.replies.size > 0 %>
+                <span class="success radius label" title="<%= ticket.replies.size %> <%= t(:replies) %>"><%= ticket.replies.size %></span>
+              <% end %>
+              <%= ticket.subject %> - <span class="text-secondary"><%= sanitize(ticket.content, tags: [])[0..80].html_safe %></span>
+            </a>
+          <% else %>
+            <%= link_to ticket do %>
+              <em>(<%= t(:no_subject) %>)</em>
+            <% end %>
+          <% end %>
+        </td>
+
+        <td>
+          <% if can? :update, ticket %>
+            <% if ticket.assignee %>
+              <a data-assignee-id="<%= ticket.assignee.id %>" href="#"><i class="fa fa-user"></i> <%= ticket.assignee.email %></a>
+            <% else %>
+              <a data-assignee-id="" href="#"><em><%= t(:unassigned) %></em></a>
+            <% end %>
+          <% else %>
+            <% if ticket.assignee %>
+              <i class="fa fa-user"></i> <%= ticket.assignee.email %>
+            <% else %>
+              <em><%= t(:unassigned) %></em>
+            <% end %>
+          <% end %>
+        </td>
+
+        <td class="nowrap text-right text-secondary">
+          <%= l ticket.created_at, format: :short %>
+        </td>
+      </tr>
+    <% end %>
+
+    <% if @tickets.empty? %>
+      <tr>
+        <td colspan="100%"><%= t(:no_tickets_found) %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+
+<% unless @tickets.empty? %>
+
+  <div class="row">
+    <div class="small-6 columns">
+      <%= will_paginate @tickets %>
+    </div>
+    <div class="small-6 columns">
+      <%= link_to tickets_path(params.merge(format: :csv)), class: 'tiny secondary radius button right' do %>
+        <%= t(:export_tickets) %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render 'change_assignee_form', { ticket: Ticket.new } %>
+
+<% end %>
