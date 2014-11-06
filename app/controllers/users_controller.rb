@@ -86,6 +86,8 @@ class UsersController < ApplicationController
           :remember_me,
           :signature,
           :agent,
+          :fname,
+          :department,
           :notify,
           label_ids: []
       )

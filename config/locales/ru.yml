@@ -125,6 +125,7 @@ ru:
   role: 'Права'
   agent: 'Инженер'
   customer: 'Сотрудник'
+  user_actions: 'Действия'
 
 # users/_form
   account_settings: 'Настройки сотрудника'
