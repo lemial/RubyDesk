@@ -13,17 +13,6 @@
  * limitations under the License.
  */
 
-
-function showNoticeToast() {
-        $().toastmessage('showToast', {
-             text     : 'Внимание!<br>Есть ожидающие действия заявки!',
-             sticky   : true,
-             position : 'middle-right',
-             type     : 'notice',
-             closeText: ''
-        });
-}
-
 /**
  *  This JQuery Plugin will help you in showing some nice Toast-Message like notification messages. The behavior is
  *  similar to the android Toast class.
@@ -68,16 +57,16 @@ function showNoticeToast() {
 (function($)
 {
         var settings = {
-                                inEffect:                       {opacity: 'show'},      // in effect
-                                inEffectDuration:       600,                            // in effect duration in miliseconds
-                                stayTime:                       3000,                           // time in miliseconds before the item has to disappear
-                                text:                           '',                                     // content of the item. Might be a string or a jQuery object. Be aware that any jQuery object which is acting as a message will be deleted when the toast is fading away.
-                                sticky:                         false,                          // should the toast item sticky or not?
-                                type:                           'notice',                       // notice, warning, error, success
-                position:           'top-right',        // top-left, top-center, top-right, middle-left, middle-center, middle-right ... Position of the toast container holding different toast. Position can be set only once at the very first call, changing the position after the first call does nothing
-                closeText:          '',                 // text which will be shown as close button, set to '' when you want to introduce an image via css
-                close:              null                // callback function when the toastmessage is closed
-            };
+            inEffect: {opacity: 'show'},
+            inEffectDuration: 600,
+            stayTime: 3000,
+            text: '',
+            sticky: false,
+            type: 'notice',
+            position: 'top-right',
+            closeText: '',
+            close: null
+        };
 
     var methods = {
         init : function(options)
@@ -150,7 +139,6 @@ function showNoticeToast() {
                                         obj.parent().remove();
                                 });
                         });
-            // callback
             if (options && options.close !== null)
             {
                 options.close();
@@ -160,7 +148,6 @@ function showNoticeToast() {
 
     $.fn.toastmessage = function( method ) {
 
-        // Method calling logic
         if ( methods[method] ) {
           return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
         } else if ( typeof method === 'object' || ! method ) {
@@ -172,3 +159,18 @@ function showNoticeToast() {
 
 })(jQuery);
 
+
+function showNoticeToast() {
+    $().toastmessage('showNoticeToast', "Есть неназначенные заявки!");
+}
+
+function showStickyNoticeToast() {
+    $().toastmessage('showToast', {
+         text     : 'Внимание!<br>Есть неназначенные заявки!',
+         sticky   : true,
+         position : 'middle-right',
+         type     : 'notice',
+         closeText: '',
+         close    : function () {}
+    });
+}
