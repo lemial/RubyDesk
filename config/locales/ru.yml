@@ -12,7 +12,8 @@ ru:
   sign_out: 'Выход'
   delete: 'Удалить'
   add: 'Ок'
-
+  in: 'в'
+  
 # devise/sessions/new
   sign_in: 'Войти'
 
@@ -52,7 +53,7 @@ ru:
   prio_ticket: 'Приоритет'
   initiator: 'Инициатор заявки'
   context: 'Метки, тема и описание'
-  assigned_to: 'Назначено инженеру'
+  assigned_to: 'Исполнитель заявки'
   create_date: 'Дата и время создания'
 
 # tickets/show
@@ -125,7 +126,11 @@ ru:
   role: 'Права'
   agent: 'Инженер'
   customer: 'Сотрудник'
-  user_actions: 'Действия'
+  fname: 'ФИО'
+  department: 'Подразделение'
+  phone: 'Телефон'
+  department_role: 'Должность'
+  undefine: 'Не заполнено'
 
 # users/_form
   account_settings: 'Настройки сотрудника'
@@ -181,7 +186,7 @@ ru:
         content: 'Описание'
         status: 'Статус'
         priority: 'Приоритет'
-        assignee_id: 'Быстрое переназначение заявки сотруднику'
+        assignee_id: 'Назначить сотрудника ответственного за исполнение заявки'
 
       reply:
         to: 'To'

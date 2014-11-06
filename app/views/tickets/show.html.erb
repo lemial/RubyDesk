@@ -4,7 +4,7 @@
       <%= !@ticket.subject.nil? ? @ticket.subject : '<em>(' + t(:no_subject) + ')</em>'.html_safe %>
     </h3>
     <h5 class="subheader text-secondary mb">
-      <%= t(:ticket_by_at, email: @ticket.user.email, at: l(@ticket.created_at, format: :long)) %>
+      <%= t(:ticket_by_at, email: @ticket.user.fname, at: l(@ticket.created_at, format: :long)) %>
     </h5>
   </div>
 </div>
@@ -119,7 +119,7 @@
                 <%= t(:unassigned) %>
               <% else %>
                 <span class="fa fa-fw fa-user"></span>
-                <%= @ticket.assignee.email %>
+                <%= @ticket.assignee.fname %>
               <% end %>
             </a>
           <% else %>
@@ -127,8 +127,8 @@
               <span class="fa fa-fw fa-user"></span>
               <%= t(:unassigned) %>
             <% else %>
-              <span class="fa fa-fw fa-user"></span>
-              <%= @ticket.assignee.email %>
+                <span class="fa fa-fw fa-user"></span>
+                <%= @ticket.assignee.fname %>
             <% end %>
           <% end %>
         </dd>

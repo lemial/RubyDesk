@@ -28,6 +28,15 @@
   </div>
 </div>
 <table class="full zebra">
+  <thead>
+    <tr>
+      <th><%=t(:prio_ticket) %></th> 
+      <th><%=t(:initiator) %></th> 
+      <th><%=t(:context) %></th> 
+      <th><%=t(:assigned_to) %></th> 
+      <th><%=t(:create_date) %></th> 
+    </tr>
+  </thead>
   <tbody>
     <% @tickets.each do |ticket| %>
       <tr data-ticket-url="<%= ticket_url(ticket) %>">
@@ -45,7 +54,7 @@
 
         <td style="white-space:nowrap">
 	  <% if !ticket.user.email.nil? %>
-            <%= ticket.user.email %>
+	    <%= ticket.user.fname %>
           <% else %>
             <%= t(:delete) %>
           <% end %>
@@ -72,13 +81,13 @@
         <td>
           <% if can? :update, ticket %>
             <% if ticket.assignee %>
-              <a data-assignee-id="<%= ticket.assignee.id %>" href="#"><i class="fa fa-user"></i> <%= ticket.assignee.email %></a>
+              <a data-assignee-id="<%= ticket.assignee.id %>" href="#"><i class="fa fa-user"></i> <%= ticket.assignee.fname %></a>
             <% else %>
               <a data-assignee-id="" href="#"><em><%= t(:unassigned) %></em></a>
             <% end %>
           <% else %>
             <% if ticket.assignee %>
-              <i class="fa fa-user"></i> <%= ticket.assignee.email %>
+              <i class="fa fa-user"></i> <%= ticket.assignee.fname %>
             <% else %>
               <em><%= t(:unassigned) %></em>
             <% end %>

@@ -8,8 +8,10 @@
 
       <% if can? :manage, User %>
         <%= f.text_field :email %>
-        <%= f.text_field :fname %>
-        <%= f.text_field :department %>
+        <%= f.text_field :fname, label: t(:fname) %>
+        <%= f.text_field :phone, label: t(:phone) %>
+        <%= f.text_field :department, label: t(:department) %>
+        <%= f.text_field :department_role, label: t(:department_role) %>
       <% end %>
 
       <%= f.password_field :password %>

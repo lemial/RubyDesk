@@ -34,7 +34,7 @@
                 <li><a href="<%= users_path %>"><%= t(:users) %></a></li>
             <% end %>
             <li class="has-dropdown">
-              <a href="#"><%= current_user.email %></a>
+              <a href="#"><%= current_user.fname %></a>
               <ul class="dropdown">
                 <li>
                   <%= link_to edit_user_path(current_user) do %>

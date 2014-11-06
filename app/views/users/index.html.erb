@@ -14,14 +14,25 @@
     <table class="full">
       <thead>
         <tr>
+          <th><%= t(:fname) %></th>
+          <th><%= t(:phone) %></th>
+          <th><%= t(:department) %></th>
+          <th><%= t(:department_role) %></th>
           <th><%= t(:email) %></th>
           <th><%= t(:role) %></th>
-          <th><% t(:user_actions) %></th>
         </tr>
       </thead>
       <tbody>
         <% @users.each do |user| %>
           <tr>
+            <% if user.fname == '' %>
+              <td><%= link_to t(:undefine), edit_user_path(user) %></td>
+            <% else %>
+              <td><%= link_to user.fname, edit_user_path(user) %></td>
+            <% end %>
+            <td><%= user.phone %></td>
+            <td><%= user.department %></td>
+            <td><%= user.department_role %></td>
             <td><%= link_to user.email, edit_user_path(user) %></td>
             <td><%= (user.agent?) ? t(:agent) : t(:customer) %></td>
           </tr>

@@ -88,6 +88,8 @@ class UsersController < ApplicationController
           :agent,
           :fname,
           :department,
+          :phone,
+          :department_role,
           :notify,
           label_ids: []
       )
