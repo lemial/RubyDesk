@@ -8,6 +8,6 @@ RubyDesk это WEB система HelpDesk (ServiceDesk).
 
 <img src="http://habrastorage.org/files/a16/ebf/043/a16ebf04353a4b0e954803eea4362023.png"/>
 
-<img src="http://habrastorage.org/files/8bf/043/9c7/8bf0439c7c50444098996e67be759d9a.png"/>
+<img src="http://habrastorage.org/files/9b3/a15/cef/9b3a15cefbba4350afe2354f101b4add.png"/>
 
-<img src="http://habrastorage.org/files/c73/38e/b70/c7338eb70d344f71be9232b674acb6af.png"/>
+<img src="http://habrastorage.org/files/030/07a/c0a/03007ac0ac3e4bed816cc552ebbd3e1a.png"/>
