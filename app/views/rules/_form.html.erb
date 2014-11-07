@@ -7,7 +7,7 @@
           fields << [t(key, scope: 'activerecord.attributes.ticket'), key]
         end
       %>
-      <%= f.select(:filter_field, fields) %>
+      <%= f.select(:filter_field, fields), { include_blank: t(:unassigned) }, { class: 'select2' } %>
 
       <%
         operations = []
