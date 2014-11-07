@@ -1,6 +1,9 @@
-RubyDesk (fork Brimir)
+RubyDesk (fork Brimir, Ruby based HelpDesk software)
 ======
-Русская версия Brimir (Russian Brimir)
+Русская версия Brimir (Russian Brimir).
+
+RubyDesk это HelpDesk (ServiceDesk) система.
+
 Версия постоянно дополняется и перерабатывается, следите за изменениями!
 
 <img src="http://habrastorage.org/files/8bf/043/9c7/8bf0439c7c50444098996e67be759d9a.png"/>
