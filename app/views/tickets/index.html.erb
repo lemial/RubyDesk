@@ -31,18 +31,25 @@
 <table class="full zebra">
   <thead>
     <tr>
-      <th><%=t(:prio_ticket) %></th> 
-      <th><%=t(:initiator) %></th> 
-      <th><%=t(:context) %></th> 
-      <th><%=t(:assigned_to) %></th> 
-      <th><%=t(:create_date) %></th> 
+      <th class="nowrap text-center text-secondary"><%=t(:number_ticket) %></th> 
+      <th class="nowrap text-center text-secondary"><%=t(:prio_ticket) %></th> 
+      <th class="nowrap text-center text-secondary"><%=t(:initiator) %></th> 
+      <th class="nowrap text-center text-secondary"><%=t(:context) %></th> 
+      <th class="nowrap text-center text-secondary"><%=t(:assigned_to) %></th> 
+      <th class="nowrap text-center text-secondary"><%=t(:create_date) %></th> 
     </tr>
   </thead>
   <tbody>
     <% @tickets.each do |ticket| %>
       <tr data-ticket-url="<%= ticket_url(ticket) %>">
 
-        <td>
+        <td class="nowrap text-center">
+          <% if !ticket.id.nil? %>
+	    #<%=  ticket.id %>
+          <% end %>
+        </td>
+
+        <td class="nowrap text-center">
           <% if can? :update, ticket %>
             <a href="#" data-dropdown="priorities-<%= ticket.id %>">
               <span class="priority-<%= ticket.priority %> fa fa-circle"></span>
@@ -53,7 +60,7 @@
           <% end %>
         </td>
 
-        <td style="white-space:nowrap">
+        <td class="nowrap text-center">
 	  <% if !ticket.user.email.nil? %>
 	    <% if ticket.user.fname.nil? %>
 	      <%= t(:undefine) %>
@@ -83,7 +90,7 @@
           <% end %>
         </td>
 
-        <td>
+        <td class="nowrap text-center">
           <% if can? :update, ticket %>
             <% if ticket.assignee %>
               <a data-assignee-id="<%= ticket.assignee.id %>" href="#"><i class="fa fa-user"></i> <%= ticket.assignee.fname %></a>
@@ -100,7 +107,7 @@
           <% end %>
         </td>
 
-        <td class="nowrap text-right text-secondary">
+        <td class="nowrap text-center">
           <%= l ticket.created_at, format: :short %>
         </td>
       </tr>

@@ -4,11 +4,11 @@
       <%= !@ticket.subject.nil? ? @ticket.subject : '<em>(' + t(:no_subject) + ')</em>'.html_safe %>
     </h3>
     <h5 class="subheader text-secondary mb">
-      <%= t(:ticket_by_at, email: @ticket.user.fname, at: l(@ticket.created_at, format: :long)) %>
+      <div><%= t(:ticket_number) %> <strong><%= @ticket.id %></strong></div>
+      <div><%= t(:ticket_by_at, email: @ticket.user.fname, at: l(@ticket.created_at, format: :long)) %></div>
     </h5>
   </div>
 </div>
-
 
 <div class="row collapse">
   <div class="medium-9 columns" style="border-right: 1px solid #bec8dc">

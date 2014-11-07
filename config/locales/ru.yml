@@ -50,6 +50,8 @@ ru:
   minutes: 'минут'
   export_tickets: 'Экспортировать заявки'
   export_these_tickets: 'Экспортировать выбранные заявки'
+  number_ticket: 'Номер заявки'
+  ticket_number: 'Заявка номер'
   prio_ticket: 'Приоритет'
   initiator: 'Инициатор заявки'
   context: 'Метки, тема и описание'
