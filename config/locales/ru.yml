@@ -131,6 +131,7 @@ ru:
   phone: 'Телефон'
   department_role: 'Должность'
   undefine: 'Не заполнено'
+  employee_not_select: 'Сотрудник не выбран'
 
 # users/_form
   account_settings: 'Настройки сотрудника'

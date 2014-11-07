@@ -1,22 +1,22 @@
 <%= form_for @rule do |f| %>
   <div class="row mt mb">
-    <div class="large-6 columns">
+    <div class="large-4 columns">
       <%
         fields = []
         [:from, :subject, :content].each do |key|
           fields << [t(key, scope: 'activerecord.attributes.ticket'), key]
         end
       %>
-      <%= f.select(:filter_field, fields), { include_blank: t(:unassigned) }, { class: 'select2' } %>
-
+      <%= f.select(:filter_field, fields, { include_blank: false}, { class: 'select2'}) %>
+	
       <%
         operations = []
         Rule.filter_operations.each do |key, value|
           operations << [t(key, scope: 'activerecord.attributes.rule.filter_operations'), key]
         end
       %>
-      <%= f.select(:filter_operation, operations) %>
-
+      <%= f.select(:filter_operation, operations, { include_blank: false}, { class: 'select2'}) %>
+	
       <%= f.text_field :filter_value %>
 
       <%
@@ -25,8 +25,8 @@
           operations << [t(key, scope: 'activerecord.attributes.rule.action_operations'), key]
         end
       %>
-      <%= f.select(:action_operation, operations) %>
-
+      <%= f.select(:action_operation, operations, { include_blank: false}, { class: 'select2'}) %>
+	<br>
       <%= f.text_field :action_value %>
     </div>
   </div>
