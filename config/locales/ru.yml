@@ -57,7 +57,7 @@ ru:
   create_date: 'Дата и время создания'
 
 # tickets/show
-  ticket_by_at: 'От сотрудника: %{email}, дата и время: %{at}'
+  ticket_by_at: '%{email}, %{at}'
   no_content: 'Нет отписания'
   status: 'Статус'
   assignee: 'Ответственный'

@@ -23,7 +23,7 @@ class Attachment < ActiveRecord::Base
       url: '/attachments/:id/:style',
       styles: {
           thumb: {
-              geometry: '50x50#',
+              geometry: '80x80#',
               format: :jpg,
               # this will convert transparent parts to white instead of black
               convert_options: '-flatten'

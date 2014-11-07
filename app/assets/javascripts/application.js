@@ -132,6 +132,13 @@
       toolbar: 'undo redo | bold italic | bullist numlist | outdent indent removeformat',
       height: 150,
       plugins: 'autoresize,paste',
+      setup: 
+        function(ed) {
+        ed.on('init', function() 
+          {
+            this.getDoc().body.style.fontSize = '13px';
+          });
+        }
     });
 
     jQuery(document).foundation();

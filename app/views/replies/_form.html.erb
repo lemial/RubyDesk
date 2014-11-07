@@ -17,18 +17,15 @@
           date: l(reply_to.created_at, format: :long))
       content += '<br />' + text_to_html(wrap_and_quote(reply_to.content))
     %>
-
      <p>
-       <%= r.text_area :content, label: false, class: 'tinymce',
+      <%= r.text_area :content, label: false, class: 'tinymce',
           value: (@reply.content.nil? ? content : @reply.content) %>
-     </p>
+    </p>
     <p class="no-m">
       <%= label_tag 'attachment[]', t(:attach_files) %>
     </p>
     <p>
-      <div style="width: 450px;">
-       <%= file_field_tag 'attachment[]', multiple: true, label: false %>
-      </div>
+      <%= file_field_tag 'attachment[]', multiple: true, label: false %>
     </p>
 
     <p class="no-m">

@@ -66,8 +66,10 @@
               <%= active_elem_if :a, params[:status] == 'open' &&
                   params[:assignee_id].to_i == 0,
                   href: root_path do %>
-
                 <span class="fa fa-inbox"></span><%= t(:inbox) %>
+                <% if Ticket.open.count > 0 %>
+                  <span class="regular round label"><%= Ticket.open.count %></label>
+                <% end %>
               <% end %>
             </li>
             <li>
@@ -75,12 +77,18 @@
                   params[:assignee_id].to_i == current_user.id,
                   href: tickets_path(assignee_id: current_user.id) do %>
                 <span class="fa fa-user"></span><%= t(:mine) %>
+                <% if Ticket.where(assignee_id: current_user.id, status: 0).count > 0 %>
+                  <span class="alert round label"><%= Ticket.where(assignee_id: current_user.id, status: 0).count %></span>
+                <% end %>
               <% end %>
             </li>
             <li>
               <%= active_elem_if :a, params[:status] == 'waiting',
                   href: tickets_path(status: 'waiting') do %>
                 <span class="fa fa-clock-o"></span><%= t(:waiting) %>
+                <% if Ticket.where(assignee_id: current_user.id, status: 3).count > 0 %>
+		  <span class="secondary round label"><%= Ticket.where(assignee_id: current_user.id, status: 3).count %></span>
+		<% end %>
               <% end %>
             </li>
             <li>
