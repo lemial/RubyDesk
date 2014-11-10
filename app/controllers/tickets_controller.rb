@@ -164,6 +164,7 @@ class TicketsController < ApplicationController
     def ticket_params
       if !current_user.nil? && current_user.agent?
         params.require(:ticket).permit(
+            :to_date,
             :from,
             :content,
             :subject,
@@ -173,6 +174,7 @@ class TicketsController < ApplicationController
             :message_id)
       else
         params.require(:ticket).permit(
+            :to_date,
             :from,
             :content,
             :subject,

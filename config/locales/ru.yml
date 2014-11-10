@@ -134,6 +134,8 @@ ru:
   department_role: 'Должность'
   undefine: 'Не заполнено'
   employee_not_select: 'Сотрудник не выбран'
+  employee: 'Заявитель'
+  to_date: 'Исполнить до'
 
 # users/_form
   account_settings: 'Настройки сотрудника'

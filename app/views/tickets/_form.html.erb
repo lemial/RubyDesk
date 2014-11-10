@@ -1,7 +1,6 @@
 <%= form_for @ticket, url: tickets_url, html: { multipart: true } do |f| %>
 
   <h3><%= t(:new_ticket) %></h3>
-
   <p>
     <%= f.text_field :from %>
   </p>

@@ -110,6 +110,54 @@
           <% end %>
         </dd>
 
+        <dt><%= t(:to_date) %></dt>
+        <dd>
+          <% if !@ticket.to_date.nil? %>
+            <%= l(@ticket.to_date, format: :long) %>
+          <% end %>
+        </dd>
+
+
+        <dt><%= t(:employee) %></dt>
+        <dd>
+            <% if !@ticket.user.fname.empty? %>
+              <span class="fa fa-fw fa-user"></span>
+              <%= @ticket.user.fname %>
+            <% end %>
+        </dd>
+  
+        <% if !@ticket.user.department_role.empty? %>
+          <dt><%= t(:department_role) %></dt>
+          <dd>
+            <span class="fa fa-fw fa-briefcase"></span>
+            <%= @ticket.user.department_role %>
+          </dd>
+        <% end %>
+
+        <% if !@ticket.user.department.empty? %>
+          <dt><%= t(:department) %></dt>
+          <dd>
+            <span class="fa fa-fw fa-home"></span>
+            <%= @ticket.user.department %>
+          </dd>
+        <% end %>
+
+        <% if !@ticket.user.phone.empty? %>
+          <dt><%= t(:phone) %></dt>
+          <dd>
+            <span class="fa fa-fw fa-phone"></span>
+            <%= @ticket.user.phone %>
+          </dd>
+        <% end %>
+
+        <% if !@ticket.user.email.empty? %>
+          <dt><%= t(:email) %></dt>
+          <dd>
+            <span class="fa fa-fw fa-envelope"></span>
+            <a class="url" href='mailto:<%= @ticket.user.email %>'><%= @ticket.user.email %></a>
+          </dd>
+        <% end %>
+
         <dt><%= t(:assignee) %></dt>
         <dd>
           <% if can? :update, @ticket %>
