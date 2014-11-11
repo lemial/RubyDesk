@@ -1,0 +1,13 @@
+<div id="change-assignee-time" class="reveal-modal small" data-reveal>
+  <h3><%= t(:time_assignee) %></h3>
+
+  <%= form_for ticket, remote: true, method: :patch do |f| %>
+    <p>
+    	    <%= f.text_field :to_date, label: false, id: 'datetimepicker' %>
+    </p>
+    <%= f.submit t(:time_assign), class: 'button' %>
+  <% end %>
+
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+

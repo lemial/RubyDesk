@@ -113,10 +113,17 @@
         <dt><%= t(:to_date) %></dt>
         <dd>
           <% if !@ticket.to_date.nil? %>
-            <%= l(@ticket.to_date, format: :long) %>
+            <% if can? :update, @ticket %>
+              <a href="#" data-reveal-id="change-assignee-time">
+              <%= l(@ticket.to_date, format: :long) %>
+              </a>
+            <% end %>
+          <% else %>
+            <a href="#" data-reveal-id="change-assignee-time">
+            <%= t(:untime) %>
+            </a>
           <% end %>
         </dd>
-
 
         <dt><%= t(:employee) %></dt>
         <dd>
@@ -220,3 +227,4 @@
 </div>
 
 <%= render 'change_assignee_form', { ticket: @ticket } %>
+<%= render 'change_assignee_time', { ticket: @ticket } %>

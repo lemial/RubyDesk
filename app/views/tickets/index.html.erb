@@ -37,6 +37,7 @@
       <th class="nowrap text-center text-secondary"><%=t(:context) %></th> 
       <th class="nowrap text-center text-secondary"><%=t(:assigned_to) %></th> 
       <th class="nowrap text-center text-secondary"><%=t(:create_date) %></th> 
+      <th class="nowrap text-center text-secondary"><%=t(:to_date) %></th> 
     </tr>
   </thead>
   <tbody>
@@ -110,6 +111,15 @@
         <td class="nowrap text-center">
           <%= l ticket.created_at, format: :short %>
         </td>
+
+        <td class="nowrap text-center">
+          <% if !ticket.to_date.nil? %>
+            <%= l ticket.to_date, format: :short %>
+          <% else %>
+            <%= t(:untime) %>
+          <% end %>
+        </td>
+
       </tr>
     <% end %>
 

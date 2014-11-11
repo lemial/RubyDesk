@@ -45,6 +45,7 @@ ru:
   replies: 'ответов'
   no_subject: 'Нет темы'
   unassigned: 'Не назначена'
+  untime: 'Бессрочно'
   no_tickets_found: 'Не найдено заявок'
   search: 'Поиск'
   minutes: 'минут'
@@ -88,6 +89,10 @@ ru:
 # tickets/_change_assignee_form
   change_assignee: 'Назначить заявку'
   assign: 'Назначить'
+
+# tickets/_change_assignee_time
+  time_assignee: 'Назначить время исполнения заявки'
+  time_assign: 'Назначить'
 
 # replies/new
   add_reply: 'Добавить ответ'
