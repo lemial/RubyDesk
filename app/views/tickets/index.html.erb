@@ -31,13 +31,13 @@
 <table class="full zebra">
   <thead>
     <tr>
-      <th class="nowrap text-center text-secondary"><%=t(:number_ticket) %></th> 
-      <th class="nowrap text-center text-secondary"><%=t(:prio_ticket) %></th> 
-      <th class="nowrap text-center text-secondary"><%=t(:initiator) %></th> 
-      <th class="nowrap text-center text-secondary"><%=t(:context) %></th> 
-      <th class="nowrap text-center text-secondary"><%=t(:assigned_to) %></th> 
-      <th class="nowrap text-center text-secondary"><%=t(:create_date) %></th> 
-      <th class="nowrap text-center text-secondary"><%=t(:to_date) %></th> 
+      <th class="nowrap text-left text-secondary"><%=t(:number_ticket) %></th> 
+      <th class="nowrap text-left text-secondary"><%=t(:prio_ticket) %></th> 
+      <th class="nowrap text-left text-secondary"><%=t(:initiator) %></th> 
+      <th class="nowrap text-left text-secondary"><%=t(:context) %></th> 
+      <th class="nowrap text-left text-secondary"><%=t(:assigned_to) %></th> 
+      <th class="nowrap text-left text-secondary"><%=t(:create_date) %></th> 
+      <th class="nowrap text-left text-secondary"><%=t(:to_date) %></th> 
     </tr>
   </thead>
   <tbody>
@@ -50,7 +50,7 @@
           <% end %>
         </td>
 
-        <td class="nowrap text-center">
+        <td class="nowrap text-left">
           <% if can? :update, ticket %>
             <a href="#" data-dropdown="priorities-<%= ticket.id %>">
               <span class="priority-<%= ticket.priority %> fa fa-circle"></span>
@@ -61,7 +61,7 @@
           <% end %>
         </td>
 
-        <td class="nowrap text-center">
+        <td class="nowrap text-left">
 	  <% if !ticket.user.email.nil? %>
 	    <% if ticket.user.fname.nil? %>
 	      <%= t(:undefine) %>
@@ -73,7 +73,7 @@
           <% end %>
         </td>
 
-        <td class="text-secondary table-nowrap">
+        <td class="text-secondary table-nowrap text-left">
           <% ticket.labels.viewable_by(current_user).each do |label| %>
             <%= render label %>
           <% end %>
@@ -82,7 +82,7 @@
               <% if ticket.replies.size > 0 %>
                 <span class="success radius label" title="<%= ticket.replies.size %> <%= t(:replies) %>"><%= ticket.replies.size %></span>
               <% end %>
-              <%= ticket.subject %> - <span class="text-secondary"><%= sanitize(ticket.content, tags: [])[0..80].html_safe %></span>
+              <%= ticket.subject %><!-- <span class="text-secondary"><%= sanitize(ticket.content, tags: [])[0..80].html_safe %></span> -->
             </a>
           <% else %>
             <%= link_to ticket do %>
@@ -91,7 +91,7 @@
           <% end %>
         </td>
 
-        <td class="nowrap text-center">
+        <td class="nowrap text-left">
           <% if can? :update, ticket %>
             <% if ticket.assignee %>
               <a data-assignee-id="<%= ticket.assignee.id %>" href="#"><i class="fa fa-user"></i> <%= ticket.assignee.fname %></a>
@@ -108,11 +108,11 @@
           <% end %>
         </td>
 
-        <td class="nowrap text-center">
+        <td class="nowrap text-left">
           <%= l ticket.created_at, format: :short %>
         </td>
 
-        <td class="nowrap text-center">
+        <td class="nowrap text-left">
           <% if !ticket.to_date.nil? %>
             <%= l ticket.to_date, format: :short %>
           <% else %>

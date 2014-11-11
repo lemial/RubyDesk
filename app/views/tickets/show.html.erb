@@ -99,29 +99,38 @@
         <dt><%= t(:priority) %></dt>
         <dd>
           <% if can? :update, @ticket %>
-            <a href="#" data-dropdown="priorities-<%= @ticket.id %>">
+            <% if @ticket.user.id == @current_user.id || @current_user.tech? %>
+              <a href="#" data-dropdown="priorities-<%= @ticket.id %>">
+                <span class="priority-<%= @ticket.priority %> fa fa-fw fa-circle"></span>
+                <%= t(@ticket.priority) %>
+              </a>
+              <%= render 'priority_dropdown', ticket: @ticket, short: false %>
+            <% else %>
               <span class="priority-<%= @ticket.priority %> fa fa-fw fa-circle"></span>
               <%= t(@ticket.priority) %>
-            </a>
-            <%= render 'priority_dropdown', ticket: @ticket, short: false %>
-          <% else %>
-            <span class="priority-<%= @ticket.priority %> fa fa-fw fa-circle"></span>
-            <%= t(@ticket.priority) %>
+            <% end %>
           <% end %>
         </dd>
 
         <dt><%= t(:to_date) %></dt>
         <dd>
-          <% if !@ticket.to_date.nil? %>
-            <% if can? :update, @ticket %>
-              <a href="#" data-reveal-id="change-assignee-time">
-              <%= l(@ticket.to_date, format: :long) %>
-              </a>
+          <% if can? :update, @ticket %>
+            <% if @ticket.user.id == @current_user.id || @current_user.tech? %>
+              <% if !@ticket.to_date.nil? %>
+                <span class="fa fa-fw fa-clock-o"></span>
+                <a href="#" data-reveal-id="change-assignee-time">
+                <%= l(@ticket.to_date, format: :long) %>
+                </a>
+              <% else %>
+                <span class="fa fa-fw fa-clock-o"></span>
+                <a href="#" data-reveal-id="change-assignee-time">
+                <%= t(:untime) %>
+                </a>
+              <% end %>
+            <% else %>
+              <span class="fa fa-fw fa-clock-o"></span>
+              <%= t(:untime) %>
             <% end %>
-          <% else %>
-            <a href="#" data-reveal-id="change-assignee-time">
-            <%= t(:untime) %>
-            </a>
           <% end %>
         </dd>
 

@@ -55,7 +55,7 @@ ru:
   ticket_number: 'Заявка номер'
   prio_ticket: 'Приоритет'
   initiator: 'Инициатор заявки'
-  context: 'Метки, тема и описание'
+  context: 'Метки и тема'
   assigned_to: 'Исполнитель заявки'
   create_date: 'Дата и время создания'
 
@@ -144,7 +144,8 @@ ru:
 
 # users/_form
   account_settings: 'Настройки сотрудника'
-  only_fill_in_passwords_when_modifying: Должны быть заполнены оба поля ввода нового пароля и подтверждения
+  only_fill_in_passwords_when_modifying: 'Если требуется сменить пароль - заполните поля ввода пароля и подтверждения'
+  user_is_an_tech: 'Пользователь является администратором'
   user_is_an_agent: 'Пользователь является инженером'
   receive_new_ticket_notifications: 'Получать уведомления о новых заявках'
   email_settings: 'Настройки Email'
@@ -213,7 +214,8 @@ ru:
         action_operations:
           assign_label: 'Добавить метку'
           notify_user: 'Отправить уведомнение на Email'
-          change_status: 'Изменить статус на'
+          change_status: 'Изменить статус'
+          change_priority: 'Изменить приоритет'
         action_value: 'Параметры действий'
 
 

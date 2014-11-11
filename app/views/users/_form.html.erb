@@ -7,20 +7,27 @@
       <p><%= t(:only_fill_in_passwords_when_modifying) %></p>
 
       <% if can? :manage, User %>
-        <%= f.text_field :email, required: true %>
+        <% if @user == @current_user || @current_user.tech? %>
+          <%= f.text_field :email, required: true %>
+        <% end %>
         <%= f.text_field :fname, label: t(:fname), required: true %>
         <%= f.text_field :phone, label: t(:phone) %>
         <%= f.text_field :department, label: t(:department) %>
         <%= f.text_field :department_role, label: t(:department_role) %>
       <% end %>
-
-      <%= f.password_field :password %>
-
-      <%= f.password_field :password_confirmation %>
-
-      <% if can? :manage, User %>
-        <%= f.check_box :agent, label: t(:user_is_an_agent) %>
+      
+      <% if @user == @current_user || @current_user.tech? %>
+        <%= f.password_field :password %>
+        <%= f.password_field :password_confirmation %>
       <% end %>
+
+      <% if @current_user.tech? %>
+        <% if can? :manage, User %>
+          <%= f.check_box :agent, label: t(:user_is_an_agent) %>
+          <%= f.check_box :tech, label: t(:user_is_an_tech) %>
+        <% end %>
+      <% end %>
+
     </div>
 
     <div class="medium-6 columns">

@@ -86,6 +86,7 @@ class UsersController < ApplicationController
           :remember_me,
           :signature,
           :agent,
+          :tech,
           :fname,
           :department,
           :phone,
@@ -98,6 +99,7 @@ class UsersController < ApplicationController
       unless current_user.agent?
         attributes.delete(:email)
         attributes.delete(:agent)
+        attributes.delete(:tech)
         attributes.delete(:label_ids)
       end
 

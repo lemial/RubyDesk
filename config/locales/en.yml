@@ -74,6 +74,7 @@ en:
 
 # tickets/_change_status_form
   change_status: Change status
+  change_priority: Change priority to
 
 # tickets/_change_assignee_form
   change_assignee: Assign ticket
