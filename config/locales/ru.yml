@@ -13,6 +13,7 @@ ru:
   delete: 'Удалить'
   add: 'Ок'
   in: 'в'
+  create_ticket: 'Создать заявку'
   
 # devise/sessions/new
   sign_in: 'Войти'
@@ -58,7 +59,8 @@ ru:
   context: 'Метки и тема'
   assigned_to: 'Исполнитель заявки'
   create_date: 'Дата и время создания'
-
+  no_existing_match: 'Совпадений не найдено'
+  
 # tickets/show
   ticket_by_at: '%{email}, %{at}'
   no_content: 'Нет отписания'
@@ -192,7 +194,8 @@ ru:
         label_ids: 'Метки'
 
       ticket:
-        from: 'От кого (Email)'
+        fname: 'ФИО'
+        from: 'Email'
         subject: 'Тема'
         content: 'Описание'
         status: 'Статус'

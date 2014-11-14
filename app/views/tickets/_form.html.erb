@@ -2,6 +2,10 @@
 
   <h3><%= t(:new_ticket) %></h3>
   <p>
+    <label><%= t(:fname) %></label>
+    <%= f.autocomplete_field :fname, users_path, id: 'from_fullname', id_element: '#id'   %>
+  </p>
+  <p>
     <%= f.text_field :from %>
   </p>
   <p>
@@ -11,9 +15,32 @@
     <%= f.text_area :content, class: 'tinymce' %>
   </p>
   <p>
-    <%= f.submit class: 'button regular radius' %>
+    <%= f.submit class: 'button regular radius', value: t(:create_ticket) %>
   </p>
 
 <% end %>
 
+<script>
+window.onload = function() { 
+$('#from_fullname').bind('railsAutocomplete.select', function(event, data){
+    if ((data.item.id) != null)
+    {
+	$("#ticket_from").val(data.item.id);
+    } else {
+	$("#ticket_from").val(randomEmail(8) + '@' + randomEmail(8) + '.com');
+    }
+});
 
+function randomEmail (strLength) {
+    var result = [];
+    charSet = 'abcdefghijklmnopqrstuvwxyz';
+        
+        while (--strLength) {
+        result.push(charSet.charAt(Math.floor(Math.random() * charSet.length)));
+        }
+                        
+    return result.join('');
+}
+
+};
+</script>

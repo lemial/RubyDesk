@@ -19,14 +19,16 @@ module CreateFromUser
 
   included do
     attr_accessor :from
+    attr_accessor :fname
 
     def from=(email)
+	fname=(fname)
 
       unless email.blank?
 
         # search using the same method as Devise validation
         from_user = User.find_first_by_auth_conditions(email: email)
-
+	logger.info(fname)
         if !from_user
           password_length = 12
           password = Devise.friendly_token.first(password_length)
@@ -36,12 +38,14 @@ module CreateFromUser
 
         self.user = from_user
       end
-
-    end
+   end
 
     def from
       user.email unless user.nil?
     end
-  end
 
+    def fname
+      user.fname unless user.nil?
+    end
+  end
 end

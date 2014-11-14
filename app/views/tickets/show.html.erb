@@ -29,12 +29,13 @@
       <% end %>
 
       <ul class="inline-list text-secondary">
-        <li><%= t(:notification_sent_to) %></li>
-        <% @ticket.notified_users.each do |user| %>
-          <li><%= user.email %></li>
+        <% if !@ticket.notified_users.empty? %>
+          <li><%= t(:notification_sent_to) %></li>
+          <% @ticket.notified_users.each do |user| %>
+            <li><%= user.email %></li>
+          <% end %>
         <% end %>
       </ul>
-
 
       <% if @ticket.attachments.size > 0 %>
         <hr />
@@ -43,6 +44,7 @@
         </ul>
       <% end %>
     </div>
+
 
     <% if @ticket.replies.size > 1 %>
       <div class="row replies">
@@ -61,7 +63,6 @@
               <% end %>
 
               <%= render reply, div_class: div_class %>
-
 
               <% count += 1 %>
 
@@ -136,13 +137,13 @@
 
         <dt><%= t(:employee) %></dt>
         <dd>
-            <% if !@ticket.user.fname.empty? %>
+            <% if !@ticket.user.fname.nil? %>
               <span class="fa fa-fw fa-user"></span>
               <%= @ticket.user.fname %>
             <% end %>
         </dd>
   
-        <% if !@ticket.user.department_role.empty? %>
+        <% if !@ticket.user.department_role.nil? %>
           <dt><%= t(:department_role) %></dt>
           <dd>
             <span class="fa fa-fw fa-briefcase"></span>
@@ -150,7 +151,7 @@
           </dd>
         <% end %>
 
-        <% if !@ticket.user.department.empty? %>
+        <% if !@ticket.user.department.nil? %>
           <dt><%= t(:department) %></dt>
           <dd>
             <span class="fa fa-fw fa-home"></span>
@@ -158,7 +159,7 @@
           </dd>
         <% end %>
 
-        <% if !@ticket.user.phone.empty? %>
+        <% if !@ticket.user.phone.nil? %>
           <dt><%= t(:phone) %></dt>
           <dd>
             <span class="fa fa-fw fa-phone"></span>

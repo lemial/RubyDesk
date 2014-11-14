@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111110614) do
+ActiveRecord::Schema.define(version: 20141112052938) do
 
   create_table "attachments", force: true do |t|
     t.integer  "attachable_id"
@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(version: 20141111110614) do
     t.string   "content_type", default: "html"
     t.integer  "status",       default: 0,      null: false
     t.integer  "priority",     default: 0,      null: false
-    t.string   "fname"
     t.datetime "to_date"
   end
 

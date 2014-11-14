@@ -14,8 +14,15 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+require 'unicode_utils'
+
+
 class UsersController < ApplicationController
 
+  autocomplete :users, :fname do |items|
+    CustomJSON::Encoder.encode(items)
+  end
+  
   load_and_authorize_resource :user
 
   def edit
@@ -46,20 +53,37 @@ class UsersController < ApplicationController
 
   def index
 
-    if params[:format].nil?
-      @users = User.ordered.paginate(page: params[:page])
-    elsif params[:format] == 'json'
-      if params[:init].present?
-        @users = params[:q].split(',')
-        @users = @users.map { |user| { id: user, text: user } }
+    if !params[:term].nil?
+      if params[:term]
+        @users = User.where('fname like ?', '%' + UnicodeUtils.titlecase(params[:term]) + '%').all
+        @fname_hash = []
+    	  @users.each do |hash|
+    	    @fname_hash << { 'label' => hash.fname, 'id' => hash.email }
+    	  end
+    	  if @fname_hash.empty?
+    	    @fname_hash << { 'label' => I18n::translate(:no_existing_match) }
+    	  end
       else
-        @users = User.by_email(params[:q])
-        @users = @users.map { |user| { id: user.email, text: user.email } }
+        @users = User.all
       end
+      
+      render :json => @fname_hash
+    else
 
-      render json: { users: @users }
+      if params[:format].nil?
+        @users = User.ordered.paginate(page: params[:page])
+      elsif params[:format] == 'json'
+        if params[:init].present?
+          @users = params[:q].split(',')
+          @users = @users.map { |user| { id: user, text: user } }
+        else
+          @users = User.by_email(params[:q])
+          @users = @users.map { |user| { id: user.email, text: user.email } }
+        end
+
+        render json: { users: @users }
+      end
     end
-
   end
 
   def new

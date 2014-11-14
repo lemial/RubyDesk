@@ -12,10 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/autocomplete
 //= require foundation
 //= require select2
 //= require tinymce-jquery
 //= require tickets
+//= require autocomplete-rails
 
 (function() {
 
@@ -144,6 +146,5 @@
     jQuery(document).foundation();
 
   });
-
 
 })();

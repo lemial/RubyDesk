@@ -2,8 +2,8 @@
 
   <%= r.hidden_field :ticket_id %>
   <div class="ma">
-    <h4><%= t(:reply) %></h4>
-
+    <a class="show_hide" href="#" rel="#slidingDiv"><h4><%= t(:add_reply) %></h4></a>
+    <div id="slidingDiv" class="toggleDiv" style="display: none;">
     <%
       content = '<p></p>' + current_user.signature.to_s
       reply_to = @reply.other_replies.order(:id).last
@@ -38,7 +38,8 @@
     <p>
       <%= r.submit value: t(:send_reply), class: 'button regular radius' %>
     </p>
-
+    </div>
+    <br>
   </div>
 <% end %>
 
