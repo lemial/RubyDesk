@@ -18,11 +18,13 @@ module CreateFromUser
   extend ActiveSupport::Concern
 
   included do
-    attr_accessor :from
-    attr_accessor :fname
+    attr_accessor :fio, :from
+    
+    def fio=(fname)
+        return 'Test'
+    end
 
     def from=(email)
-	fname=(fname)
 
       unless email.blank?
 
@@ -32,7 +34,7 @@ module CreateFromUser
         if !from_user
           password_length = 12
           password = Devise.friendly_token.first(password_length)
-          from_user = User.create!(email: email, password: password,
+          from_user = User.create!(email: email, fname: fio, password: password,
               password_confirmation: password)
         end
 
