@@ -165,6 +165,7 @@ class TicketsController < ApplicationController
       if !current_user.nil? && current_user.agent?
         params.require(:ticket).permit(
             :to_date,
+	    :fname,
             :from,
             :content,
             :subject,
